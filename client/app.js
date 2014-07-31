@@ -21,7 +21,6 @@ Template.addPost.events({
 Template.post.getPost = function() {
   if(Router.current() && Router.current().data()) {
     var post = Posts.findOne({_id: Router.current().data().postId});
-    console.log(post);
     return post;
   }
 }
