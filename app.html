@@ -1,0 +1,37 @@
+<template name='postList'>
+  <a href="/">Home</a> |
+  <a href="/addPost">Add New Post</a>
+  <h1>Posts</h1>
+
+  <ul>
+  {{#each posts}}
+    <li>
+      <a href="/post/{{_id}}">{{title}}</a>
+    </li>
+  {{/each}}
+  </ul>
+
+</template>
+
+<template name='post'>
+  <a href="/">Home</a>
+  {{#with getPost}}
+  <h1>{{title}}</h1>
+  <p>
+    {{content}}
+  </p>
+  {{/with}}
+</template>
+
+<template name='addPost'>
+  <a href="/">Home</a> 
+  <h1>Add New Post</h1>
+
+  <input id='title' type='text' placeholder='Enter Post Title' />
+  <br>
+  <textarea id='content' placeholder='Enter Post Content'>
+
+  </textarea>
+  <br>
+  <button>Add Post</button>
+</template>
