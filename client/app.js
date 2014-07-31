@@ -5,23 +5,23 @@ Template.addPost.events({
 
     var post = {
       title: title,
-      content: content
+      content: content,
+      _id: Meteor.uuid()
     };
 
-    Meteor.call('addPost', post, function(err, postId) {
+    Meteor.call('addPost', post, function(err) {
       if(err) {
         alert(err.reason);
-      } else {
-        Router.go('/post/' + postId);
       }
     });
+
+    Router.go('/post/' + post._id);
   }
 });
 
 Template.post.getPost = function() {
   if(Router.current() && Router.current().data()) {
     var post = Posts.findOne({_id: Router.current().data().postId});
-    console.log(post);
     return post;
   }
 }
